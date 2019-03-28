@@ -66,6 +66,7 @@ export default {
                 if(result.code=='0'){
                     this.$store.commit('settoken',result.token)
                     window.localStorage.setItem('token',result.token)
+                    this.$router.replace('/index') // 防止返回上一项，跳转登录页，采用replace
                 }else{
                     alert(result.data.message)
                 }
