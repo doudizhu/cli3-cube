@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Register from './views/Register.vue'
 
 Vue.use(Router)
 
@@ -10,8 +9,13 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'index',
+      redirect: 'login'
+    },
+    {
+      path: '/register',
       name: 'register',
-      component: Register
+      component: () => import('./views/Register.vue'),
     },
     {
       path: '/login',

@@ -1,5 +1,6 @@
 <template lang='pug'>
   div
+    img.headerimg(src='https://xd-video-pc-img.oss-cn-beijing.aliyuncs.com/xdclass_pro/bannner/1901/learn.png')
     cube-form(
         :model='model'
         :schema='schema'
@@ -72,3 +73,8 @@ export default {
     }
 };
 </script>
+
+<style lang="stylus" scoped>
+    .headerimg
+        width 100%
+</style>
