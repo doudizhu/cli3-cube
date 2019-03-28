@@ -32,6 +32,26 @@ module.exports = {
                         })
                     }
                 })
+
+
+                // 登录接口
+                let tokenkey = 'xdclass'
+                app.get('/api/login',(req,res)=>{
+                    const {username,password} = req.query
+                    const userLength = userpoor.filter(v=>v.username==username && v.password==password).length
+                    if(userLength>0){
+                        res.json({
+                            code:0,
+                            message:'登录成功',
+                            token:tokenkey+'-'+username+'-'+(new Date().getTime()+60*60*10000),
+                        })
+                    }else{
+                        res.json({
+                            code:1,
+                            message:'账号或密码错误',
+                        })
+                    }
+                })
             },
         },
     },
