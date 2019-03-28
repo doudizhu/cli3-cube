@@ -1,6 +1,7 @@
 <template lang="pug">
     div
-        router-view
+        transition(:name='transitionName')
+            router-view.Router
         cube-tab-bar.botnav(
             v-model="selectedLabelDefault"
             :data="tabs"
@@ -13,6 +14,7 @@
 export default {
     data () {
         return {
+            transitionName:'slide-right',
             selectedLabelDefault: '首页',
             tabs: [
                 {
@@ -77,5 +79,18 @@ export default {
             padding-top 3px
         i
             font-size 20px
-
+    .Router
+        position absolute
+        width 100%
+        transition all 0.8s ease
+    .slide-left-enter,
+    .slide-right-leave-active
+        opacity 0
+        --webkit-transform translate(100%,0)
+        transform translate(100%,0)
+    .slide-right-enter,
+    .slide-left-leave-active
+        opacity 0
+        --webkit-transform translate(-100%,0)
+        transform translate(-100%,0)
 </style>
