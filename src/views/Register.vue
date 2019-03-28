@@ -12,14 +12,14 @@ export default {
     data() {
         return {
             model: {
-                userName: "",
+                username: "",
                 password: ""
             },
             schema: {
                 fields: [
                     {
                         type: "input",
-                        modelKey: "userName",
+                        modelKey: "username",
                         label: "用户名",
                         props: {
                             placeholer: "请输入用户名"
@@ -60,7 +60,14 @@ export default {
     methods: {
         submitHandler(e) {
             e.preventDefault();
-            console.log("注册");
+            this.$http.get(
+                '/api/register',
+                {
+                    params:this.model,
+                }
+            ).then(res=>{
+                console.log(res.data.success)
+            }).catch(err=>console.log(err))
         }
     }
 };
