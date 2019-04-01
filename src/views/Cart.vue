@@ -11,20 +11,27 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
     data(){
         return {
-            cartarr: [
-                {
-                    title: '小米手机',
-                    cartCount: 5,
-                },
-                {
-                    title: '华为手机',
-                    cartCount: 5,
-                },
-            ]
+            // cartarr: [
+            //     {
+            //         title: '小米手机',
+            //         cartCount: 5,
+            //     },
+            //     {
+            //         title: '华为手机',
+            //         cartCount: 5,
+            //     },
+            // ]
         }
+    },
+    computed:{
+        ...mapState({
+           cartarr: state => state.cartarray
+        })
     },
     methods:{
         // 减少商品
@@ -33,9 +40,9 @@ export default {
         },
         // 增加商品
         addCart(index){
-
+            
         },
-    }
+    },
 }
 </script>
 

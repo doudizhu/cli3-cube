@@ -14,6 +14,7 @@
                 )
                     img(:src='tag.image')
                     p {{tag.label}}
+                        i.cubeic-add(@click='addtocart($event,tag)')
 </template>
 
 <script>
@@ -99,6 +100,10 @@ export default {
             const result = await this.$http.get('/api/classify',{params:{type:index}})
             this.tags = result.data
         },
+        // 添加商品到购物车
+        addtocart(e,tag){
+            this.$store.commit('tocart',tag)
+        },
     },
     created(){
         // 获取默认的分类数据
@@ -153,4 +158,6 @@ export default {
                     img 
                         width 80px
                         height  80px
+                    .cubeic-add
+                        font-size 18px
 </style>
