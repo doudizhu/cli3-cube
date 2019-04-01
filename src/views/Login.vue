@@ -66,7 +66,12 @@ export default {
                 if(result.code=='0'){
                     this.$store.commit('settoken',result.token)
                     window.localStorage.setItem('token',result.token)
-                    this.$router.replace('/botnav/index') // 防止返回上一项，跳转登录页，采用re
+                    // 判断路由是否带参，带参数就去重定向参数地址，否则去首页
+                    if(this.$route.query.redirect){
+                        this.$router.replace({path:this.$route.query.redirect})
+                    }else{
+                        this.$router.replace('/botnav/index') // 防止返回上一项，跳转登录页，采用re
+                    }
                 }else{
                     alert(result.data.message)
                 }

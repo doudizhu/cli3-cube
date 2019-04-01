@@ -63,6 +63,25 @@ export default {
             }
         }
     },
+    created(){
+        switch(this.$route.path){
+            case '/botnav/index':
+                this.selectedLabelDefault = '首页'
+                break
+            case '/botnav/list':
+                this.selectedLabelDefault = '分类'
+                break
+            case '/botnav/search':
+                this.selectedLabelDefault = '搜索'
+                break
+            case '/botnav/cart':
+                this.selectedLabelDefault = '购物车'
+                break
+            case '/botnav/mine':
+                this.selectedLabelDefault = '我的'
+                break
+        }
+    },
 }
 </script>
 
