@@ -104,6 +104,24 @@ export default {
         // 获取默认的分类数据
         this.getclassify(0)
     },
+    mounted(){
+        // 设置滚动盒子的高度
+        const leftpanels = document.querySelector('.leftpanels')
+        const rightpanels = document.querySelector('.rightpanels')
+        // // 方式一：js计算
+        // const bodyheight = document.documentElement.clientHeight
+        // leftpanels.style.height = bodyheight - 57 + 'px'
+        // rightpanels.style.height = bodyheight - 57 + 'px'
+        // 方式二：纯css实现，height:-webkit-fill-available,
+        // 缺点不兼容ie&edge 
+        // 优点一：不需要计算
+        // 优点二：可以放到最开始生命周期中执行，防止被编译style的默认代码覆盖（*待优化）
+        leftpanels.style.height = '-webkit-fill-available'
+        rightpanels.style.height = '-webkit-fill-available'
+        const panelsbox = document.querySelector('.panelsbox')
+        panelsbox.style.paddingBottom = '57px'
+
+    },
 }
 </script>
 
