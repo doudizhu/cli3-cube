@@ -26,7 +26,14 @@ export default new Vuex.Store({
   actions: {
 
   },
+  // 相当于vue的计算属性computed
   getters: {
-
+    countsum: state => {
+      let num = 0
+      state.cartarray.forEach(v=>{
+        num += v.cartCount
+      })
+      return num
+    }
   },
 })
