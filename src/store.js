@@ -21,7 +21,25 @@ export default new Vuex.Store({
       }else{
         state.cartarray.push({title:tag.label,cartCount:1})
       }
-    }
+    },
+    // 购物车数量加一
+    cartadd(state,index){
+      state.cartarray[index].cartCount++
+    },
+    // 购物车数量减一
+    cartremove(state,index){
+      if(state.cartarray[index].cartCount>1){
+        state.cartarray[index].cartCount--
+      }else{
+        if(window.confirm('确定从购物车移除商品吗？')){
+          state.cartarray.splice(index,1)
+        }
+      }
+    },
+    // 清空购物车
+    clearcart(state){
+      state.cartarray = []
+    },
   },
   actions: {
 
